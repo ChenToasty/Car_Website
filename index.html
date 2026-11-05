@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Garage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>My Garage</h1>
+    <p>Enter information about a car to add it to your garage.</p>
+
+    <form id="carForm">
+      <label for="model">Car model</label>
+      <input type="text" id="model" placeholder="Example: WRX" required>
+
+      <label for="brand">Brand</label>
+      <select id="brand" required>
+        <option value="">Choose a brand</option>
+        <option>Subaru</option>
+        <option>Lexus</option>
+        <option>Mercedes-Benz</option>
+        <option>Toyota</option>
+        <option>Honda</option>
+        <option>Other</option>
+      </select>
+
+      <label for="year">Year</label>
+      <input type="number" id="year" min="1900" max="2030" placeholder="Example: 2017" required>
+
+      <label for="color">Car color</label>
+      <input type="color" id="color" value="#4169e1">
+
+      <label for="notes">Notes (optional)</label>
+      <textarea id="notes" rows="2" placeholder="What do you like about it?"></textarea>
+
+      <label class="check"><input type="checkbox" id="favorite"> This is my favorite car</label>
+
+      <button type="submit">Add Car</button>
+    </form>
+
+    <section aria-live="polite">
+      <h2>Cars Added</h2>
+      <ul id="carList"><li id="emptyMessage">No cars added yet.</li></ul>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
