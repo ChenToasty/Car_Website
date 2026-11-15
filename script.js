@@ -1,36 +1,40 @@
-// When the form is submitted, show the entered car on the page.
+import { createCar, getCarTitle } from "./functions.mjs";
+
+// Show a new car after submitting the form.
 const form = document.getElementById("carForm");
 const carList = document.getElementById("carList");
 
 form.addEventListener("submit", function(event) {
-  event.preventDefault(); // Stops the page from refreshing
+  event.preventDefault();
 
-  const model = document.getElementById("model").value.trim();
-  const brand = document.getElementById("brand").value;
-  const year = document.getElementById("year").value;
-  const color = document.getElementById("color").value;
-  const notes = document.getElementById("notes").value.trim();
-  const favorite = document.getElementById("favorite").checked;
+  const car = createCar(
+    document.getElementById("model").value,
+    document.getElementById("brand").value,
+    document.getElementById("year").value,
+    document.getElementById("color").value,
+    document.getElementById("notes").value,
+    document.getElementById("favorite").checked
+  );
 
   const empty = document.getElementById("emptyMessage");
   if (empty) empty.remove();
 
   const item = document.createElement("li");
   const heading = document.createElement("strong");
-  heading.textContent = year + " " + brand + " " + model + (favorite ? " ★" : "");
+  heading.textContent = getCarTitle(car);
   item.appendChild(heading);
 
   const swatch = document.createElement("span");
   swatch.className = "swatch";
-  swatch.style.backgroundColor = color;
-  swatch.title = "Selected color: " + color;
+  swatch.style.backgroundColor = car.color;
+  swatch.title = "Selected color: " + car.color;
   item.appendChild(document.createTextNode("  "));
   item.appendChild(swatch);
 
-  if (notes) {
+  if (car.notes) {
     const noteText = document.createElement("span");
     noteText.className = "notes";
-    noteText.textContent = notes;
+    noteText.textContent = car.notes;
     item.appendChild(noteText);
   }
 
