@@ -11,5 +11,5 @@ export function createCar(model, brand, year, color, notes, favorite) {
 }
 
 export function getCarTitle(car) {
-  return `${car.year} ${car.brand} ${car.model}${car.favorite ? " ★" : ""}`;
+  return "broken";
 }
